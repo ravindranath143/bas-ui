@@ -4,16 +4,18 @@
     <button mat-raised-button color="primary">CONNECT</button>
     <h1 class="example-h1">Connected Devices</h1>
     <table class="table">
-		<tr>
+		<thead><tr>
 			<th class="text-center">Name</th>
 			<th class="text-center">ID</th>
 			<th class="text-center">Address</th>
-		</tr>
-		<tr *ngFor = "let val of data; let i = index; ">
-			<td>{{val.name}}</td>
-			<td>{{val.id}}</td>
-			<td>{{val.address}}</td>
-		</tr>
+		</tr></thead>
+		<tbody>
+			<tr *ngFor = "let val of data; let i = index; ">
+				<td>{{val.name}}</td>
+				<td>{{val.id}}</td>
+				<td>{{val.address}}</td>
+			</tr>
+		</tbody>
 	</table>
   </mat-card-content>
 </mat-card>
