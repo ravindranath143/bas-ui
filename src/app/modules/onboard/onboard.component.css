@@ -1,0 +1,15 @@
+table.table {
+    border: 1px solid black;
+    border-spacing: 0 !important;
+}
+thead {
+    border: none;
+    background-color: rgba(0, 0, 0, 0.4588235294117647);
+}
+th.text-center ,td{
+    border-right: 1px solid black;
+    padding: 20px;
+}
+tbody tr:nth-child(odd){
+    background-color:rgba(0, 0, 0, 0.18823529411764706);
+}
