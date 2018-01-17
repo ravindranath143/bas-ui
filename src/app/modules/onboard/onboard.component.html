@@ -3,28 +3,17 @@
     <h1 class="example-h1">Onboard</h1>
     <button mat-raised-button color="primary">CONNECT</button>
     <h1 class="example-h1">Connected Devices</h1>
+    <table class="table">
+		<tr>
+			<th class="text-center">Name</th>
+			<th class="text-center">ID</th>
+			<th class="text-center">Address</th>
+		</tr>
+		<tr *ngFor = "let val of data; let i = index; ">
+			<td>{{val.name}}</td>
+			<td>{{val.id}}</td>
+			<td>{{val.address}}</td>
+		</tr>
+	</table>
   </mat-card-content>
 </mat-card>
-
-<mat-table #table [dataSource]="tableData">
-	<!-- Name Column -->
-	<ng-container matColumnDef="name">
-	  <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-	  <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-	</ng-container>
-
-	<!-- id Column -->
-	<ng-container matColumnDef="id">
-	  <mat-header-cell *matHeaderCellDef> id </mat-header-cell>
-	  <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-	</ng-container>
-
-	<!-- address Column -->
-	<ng-container matColumnDef="address">
-	  <mat-header-cell *matHeaderCellDef> address </mat-header-cell>
-	  <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
-	</ng-container>
-
-	<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-	<mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-</mat-table>
