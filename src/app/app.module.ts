@@ -2,6 +2,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import { HttpModule } from '@angular/http';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { OnboardService } from './services/OnboardService';
+import { BaseService } from './services/BaseService';
+import { ManageService } from './services/ManageService';
 
 import { 
   MatAutocompleteModule,
@@ -39,17 +45,21 @@ import {
 import { AppComponent } from './app.component';
 import { ManageComponent } from './modules/manage/manage.component';
 import { OnboardComponent } from './modules/onboard/onboard.component';
+import { LoadingComponent } from './core/loading/loading.component';
 import { appRoutes } from './app.routes';
 
 @NgModule({
   declarations: [
     AppComponent,
     ManageComponent,
-    OnboardComponent
+    OnboardComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpModule,
+    FlexLayoutModule,
     RouterModule.forRoot(appRoutes),
     MatAutocompleteModule,
     MatButtonModule,
@@ -83,7 +93,11 @@ import { appRoutes } from './app.routes';
     MatTooltipModule,
     MatStepperModule,
   ],
-  providers: [],
+  providers: [
+    BaseService,
+    OnboardService,
+    ManageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

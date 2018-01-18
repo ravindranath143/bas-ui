@@ -1,6 +1,7 @@
 table.table {
     border: 1px solid black;
     border-spacing: 0 !important;
+    border-right: none;
 }
 thead {
     border: none;
@@ -12,4 +13,7 @@ th.text-center ,td{
 }
 tbody tr:nth-child(odd){
     background-color:rgba(0, 0, 0, 0.18823529411764706);
+}
+#button-color{
+	color: #fff;
 }

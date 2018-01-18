@@ -1,21 +1,25 @@
 <mat-card>
   <mat-card-content>
     <h1 class="example-h1">Onboard</h1>
-    <button mat-raised-button color="accent">CONNECT</button>
-    <h1 class="example-h1">Connected Devices</h1>
-    <table class="table">
-		<thead><tr>
-			<th class="text-center">Name</th>
-			<th class="text-center">ID</th>
-			<th class="text-center">Address</th>
-		</tr></thead>
-		<tbody>
-			<tr *ngFor = "let val of data; let i = index; ">
-				<td>{{val.name}}</td>
-				<td>{{val.id}}</td>
-				<td>{{val.address}}</td>
-			</tr>
-		</tbody>
-	</table>
+    <button id="button-color" mat-raised-button color="accent" (click)="getdevices()">CONNECT</button>
+    <div *ngIf="show_devices">
+    	<h1 class="example-h1">Connected Devices</h1>
+	    <table class="table">
+			<thead><tr>
+				<th class="text-center">Name</th>
+				<th class="text-center">ID</th>
+				<th class="text-center">Address</th>
+			</tr></thead>
+			<tbody>
+				<tr *ngFor="let device of devicesdata$;">
+					<td>{{device.deviceName}}</td>
+					<td>{{device.id}}</td>
+					<td>{{device.addr}}</td>
+				</tr>
+			</tbody>
+		</table>
+    </div>
+    
   </mat-card-content>
 </mat-card>
+<!-- <app-loader *ngIf="loading_data"></app-loader> -->

@@ -1,14 +1,108 @@
 <mat-card>
   <mat-card-content>
-    <mat-expansion-panel>
-  <mat-expansion-panel-header>
-    <mat-panel-title>
-      Onboard.Simulator
-    </mat-panel-title>
-  </mat-expansion-panel-header>
+  	<h1 class="example-h1">Manage</h1>
+  	<div class="panel-block" *ngFor="let device of devicesdata$;">
+		<div class="panel-head" [class.closed-panel]=" expanded_id != device.id">
+			<h3>{{device.deviceName}}</h3>
+			<div>
+				<mat-icon class="minimise-icon" *ngIf="(expanded_id == device.id)" (click)="resetpanel()">remove_circle_outline</mat-icon>
+				<mat-icon class="expand-icon" *ngIf="(expanded_id != device.id)" (click)="expanded_id = device.id">add_circle_outline</mat-icon>
+				<mat-icon class="remove-icon">highlight_off</mat-icon>
+			</div>
+		</div>
+		<div class="panel-body" *ngIf="(expanded_id == device.id)">
+			<!-- device details block -->
+			<div class="child-panel">
+				<div class="panel-block">
+					<div class="panel-head" [class.closed-panel]="((expanded_id == device.id) && !details_expanded)">
+						<h3>Device Details</h3>
+						<div>
+							<mat-icon class="minimise-icon" *ngIf="((expanded_id == device.id) && details_expanded)" (click)="details_expanded = false">remove_circle_outline</mat-icon>
+							<mat-icon class="expand-icon" *ngIf="((expanded_id == device.id) && !details_expanded)" (click)="details_expanded = true">add_circle_outline</mat-icon>
+						</div>
+					</div>
+					<div class="panel-body" *ngIf="((expanded_id == device.id) && details_expanded)">
+						<p>ID: {{device.id}}</p>
+						<p>Status: {{device.deviceStatus}}</p>
+						<p>Address: {{device.addr}}</p>
+						<p>Vendor: {{device.vendorId}}</p>
+						<p>Model Name: {{device.modelName}}</p>
+					</div>
+				</div>
+			</div>
+			<!-- sensor block -->
+			<div class="child-panel">
+				<div class="panel-block">
+					<div class="panel-head" [class.closed-panel]="((expanded_id == device.id) && !sensors_expanded)">
+						<h3>Sensor</h3>
+						<div>
+							<mat-icon class="minimise-icon" *ngIf="((expanded_id == device.id) && sensors_expanded)" (click)="sensors_expanded = false">remove_circle_outline</mat-icon>
+							<mat-icon class="expand-icon" *ngIf="((expanded_id == device.id) && !sensors_expanded)" (click)="sensors_expanded = true">add_circle_outline</mat-icon>
+						</div>
+					</div>
+					<div class="panel-body" *ngIf="((expanded_id == device.id) && sensors_expanded)">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="text-center">ID</th>
+									<th class="text-center">Name</th>
+									<th class="text-center">Unit</th>
+									<th class="text-center">Current Value</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let sensor of device.sensors;">
+									<td>{{sensor.id}}</td>
+									<td>{{sensor.name}}</td>
+									<td>{{sensor.unit}}</td>
+									<td>
+										<span>--</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<!-- setpoint block -->
+			<div class="child-panel">
+				<div class="panel-block">
+					<div class="panel-head" [class.closed-panel]="((expanded_id == device.id) && !sitepoint_expanded)">
+						<h3>Setpoint</h3>
+						<div>
+							<mat-icon class="minimise-icon" *ngIf="((expanded_id == device.id) && sitepoint_expanded)" (click)="sitepoint_expanded = false">remove_circle_outline</mat-icon>
+							<mat-icon class="expand-icon" *ngIf="((expanded_id == device.id) && !sitepoint_expanded)" (click)="sitepoint_expanded = true">add_circle_outline</mat-icon>
+						</div>
+					</div>
+					<div class="panel-body"  *ngIf="((expanded_id == device.id) && sitepoint_expanded)">
+						<table class="table">
+							<thead>
+								<tr>
+									<th class="text-center">ID</th>
+									<th class="text-center">Name</th>
+									<th class="text-center">Unit</th>
+									<th class="text-center">Current Value</th>
+									<th class="text-center">Update</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let setpoint of device.setpoints;">
+									<td>{{setpoint.id}}</td>
+									<td>{{setpoint.name}}</td>
+									<td>{{setpoint.unit}}</td>
+									<td>--</td>
+									<td><mat-icon>mode_edit</mat-icon></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
 
-  <p>panel body</p>
+		</div>
+	</div>
 
-</mat-expansion-panel>
+	
   </mat-card-content>
 </mat-card>
+

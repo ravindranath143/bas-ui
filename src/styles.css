@@ -2,6 +2,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
 @font-face { font-family: "Hanken-Book"; src: url("./assets/fonts/Hanken-Book.ttf"); }
 
-*, !mat-icon {
+*:not(mat-icon) {
   font-family: Hanken-Book !important;
 }
